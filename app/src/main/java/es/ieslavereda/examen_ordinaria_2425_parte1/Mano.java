@@ -6,14 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 public class Mano {
-    private List<Carta> cartas;
+    private Set<Carta> cartas;
 
     public Mano() {
-        this.cartas = new ArrayList<>();
+        this.cartas = new LinkedHashSet<>();
     }
 
     public void add(Carta c){
-        cartas.add(0,c);
+        List<Carta> aux = new ArrayList<>(cartas);
+        aux.add(0,c);
+        cartas = new LinkedHashSet<>(aux);
     }
 
     public int size(){
@@ -27,6 +29,7 @@ public class Mano {
     public Carta get(int position){
         return new ArrayList<>(cartas).get(position);
     }
+
     public void clear(){
         cartas.clear();
     }
